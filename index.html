@@ -469,14 +469,45 @@
         <div class="contact-wrapper">
           <!-- LEFT COLUMN: replace with any two images, stacked -->
           <div class="contact-images">
-            <img
+            <!-- <img
               src="https://via.placeholder.com/600x400"
               alt="Placeholder image 1"
             />
             <img
               src="https://via.placeholder.com/600x400"
               alt="Placeholder image 2"
-            />
+            /> -->
+            <iframe
+              data-tally-src="https://tally.so/embed/wLqqRO?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+              loading="lazy"
+              width="100%"
+              height="0"
+              frameborder="0"
+              marginheight="0"
+              marginwidth="0"
+              title="Newbreed form"
+            ></iframe>
+            <script>
+              var d = document,
+                w = "https://tally.so/widgets/embed.js",
+                v = function () {
+                  "undefined" != typeof Tally
+                    ? Tally.loadEmbeds()
+                    : d
+                        .querySelectorAll("iframe[data-tally-src]:not([src])")
+                        .forEach(function (e) {
+                          e.src = e.dataset.tallySrc;
+                        });
+                };
+              if ("undefined" != typeof Tally) v();
+              else if (d.querySelector('script[src="' + w + '"]') == null) {
+                var s = d.createElement("script");
+                (s.src = w),
+                  (s.onload = v),
+                  (s.onerror = v),
+                  d.body.appendChild(s);
+              }
+            </script>
           </div>
 
           <!-- RIGHT COLUMN: video-call, contact info, next steps -->
@@ -568,8 +599,12 @@
         <div class="footer-col footer-social">
           <h4>Connect With Us</h4>
           <div class="social-icons">
-            <a href="#"><img src="images/linkedin.svg" alt="LinkedIn" /></a>
-            <a href="#"><img src="images/instagram.svg" alt="Instagram" /></a>
+            <a href="#"
+              ><img src="images/linkedin-svgrepo-com.svg" alt="LinkedIn"
+            /></a>
+            <a href="#"
+              ><img src="images/instagram-svgrepo-com.svg" alt="Instagram"
+            /></a>
           </div>
           <p class="footer-copy">
             © 2025 NEWBREED SOLUTIONS. All rights reserved.
