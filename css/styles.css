@@ -441,7 +441,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 180px;
+  height: 250px;
 }
 .shape {
   width: 80px;
@@ -502,49 +502,74 @@ body {
 .orders-carousel {
   overflow: hidden;
 }
+/* remove the old CSS animation */
+.carousel-track {
+  animation: none !important;
+  will-change: transform;
+}
+
+/* container hides overflow */
+.orders-carousel {
+  overflow: hidden;
+}
+
+/* flex layout for cards */
 .carousel-track {
   display: flex;
   gap: 1rem;
-  animation: scroll 20s linear infinite;
-}
-.orders-carousel:hover .carousel-track {
-  animation-play-state: paused;
-}
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
 }
 
-/* Individual Order Card */
+/* each card fixed width */
+/* ===== Updated Recent Orders Card Styles ===== */
+
+/* Card wrapper */
 .order-card {
-  flex: 0 0 300px;
-  background: var(--color-white);
+  flex: 0 0 300px;                     /* fixed width */
+  display: flex;
+  flex-direction: column;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background: var(--color-white);      /* white bottom shows through */
 }
+
+/* Top half: grey background container for image */
+.order-image {
+  background: #e5e7eb;                 /* light grey */
+  flex: 0 0 160px;                     /* fixed height */
+  overflow: hidden;
+}
+
+/* Fill and crop the image to cover the grey area */
 .order-image img {
-  display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;         /* show top center of photo */
 }
+
+/* Bottom half: content area */
 .order-content {
   padding: 1rem;
+  background: var(--color-white);
+  flex: 1;                             /* grow if you want equal heights */
 }
+
+/* Title */
 .order-content h3 {
   font-size: 1rem;
   color: var(--color-primary);
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem;
 }
+
+/* Details */
 .order-content p {
   font-size: 0.875rem;
   color: var(--color-primary);
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem;
 }
+
+/* Completed line with checkmark */
 .order-completed {
   display: flex;
   align-items: center;
@@ -553,11 +578,13 @@ body {
   opacity: 0.7;
 }
 .order-completed::before {
-  content: '\2713';
+  content: '✔';
   color: var(--color-secondary);
   margin-right: 0.5rem;
   font-size: 0.9rem;
 }
+
+/* rest of your styles... */
 
 /* View All Orders button */
 .orders-button-container {
@@ -894,4 +921,24 @@ body {
 .footer-copy {
   font-size: 0.875rem;
   opacity: 0.6;
+}
+
+/* Override brand-card to show full-bleed images */
+.brand-card {
+  padding: 0;              /* remove the old inner padding */
+  background: none;        /* remove old bg if any */
+  box-shadow: none;        /* optional: drop the drop-shadow, or keep it */
+}
+.brand-card .brand-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;       /* covers the square */
+  border-radius: 8px;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
